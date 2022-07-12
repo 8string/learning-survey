@@ -2,11 +2,15 @@ import { createApp } from 'vue';
 
 import BaseCard from './components/UI/BaseCard.vue';
 import BaseButton from './components/UI/BaseButton.vue';
+import DeleteButton from './components/UI/DeleteButton.vue';
+import SmallDelete from './components/UI/SmallDelete.vue';
 import App from './App.vue';
 
 const app = createApp(App);
 
 app.component('base-card', BaseCard);
 app.component('base-button', BaseButton);
+app.component('delete-button', DeleteButton);
+app.component('small-delete', SmallDelete);
 
 app.mount('#app');

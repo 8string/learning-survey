@@ -4,6 +4,7 @@
       <h2>Submitted Experiences</h2>
       <div>
         <base-button @click="loadExperiences">Load Submitted Experiences</base-button>
+        <delete-button @click="deleteMe">Delete</delete-button>
       </div>
       <p v-if="isLoading">Loading...</p>
       <p v-else-if="!isLoading && error">
@@ -15,7 +16,7 @@
           v-for="result in results"
           :key="result.id"
           :name="result.name"
-          :rating="result.rating"
+          :rating="result.rating"   
         ></survey-result>
       </ul>
     </base-card>
@@ -65,6 +66,11 @@ export default {
         this.error = 'Failed to fetch data - try again later';
       });
     },
+    deleteMe() {
+        const d_json = process.env.VUE_APP_JSON;
+        fetch(d_json, {method: 'DELETE'});
+        window.location.reload();
+    },
   },
   mounted() {
     this.loadExperiences();
@@ -78,4 +84,5 @@ ul {
   margin: 0;
   padding: 0;
 }
+
 </style>

@@ -3,17 +3,25 @@
     <p>
       <span class="highlight">{{ name }}</span> rated the learning experience
       <span :class="ratingClass">{{ rating }}</span>.
+      <small-delete @click="deleteSingle">Delete2</small-delete>
     </p>
   </li>
 </template>
 
 <script>
+
 export default {
   props: ['name', 'rating'],
   computed: {
     ratingClass() {
       return 'highlight rating--' + this.rating;
     },
+  methods: {
+    deleteSingle() {
+      const d_json = process.env.VUE_APP_JSON;
+      fetch(d_json, {method: 'DELETE'});
+    }
+  }
   },
 };
 </script>
@@ -46,4 +54,5 @@ p {
 .rating--great {
   color: #008327;
 }
+
 </style>
